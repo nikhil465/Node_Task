@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 8000;
+const db = require("./config/pg");
 
 app.listen(port, function (err) {
   if (err) {
