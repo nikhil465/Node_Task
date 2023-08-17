@@ -9,12 +9,12 @@ module.exports.logs = function (req, res) {
     let logDir = "./production_logs";
 
     const now = new Date();
-    const fiveMinutesAgo = new Date(now - 5 * 60 * 1000);
+    const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
 
     const logFiles = fs
       .readdirSync(logDir)
       .filter(
-        (file) => fs.statSync(`${logDir}/${file}`).ctime > fiveMinutesAgo
+        (file) => fs.statSync(`${logDir}/${file}`).ctimeMs > fiveMinutesAgo
       );
 
     let logs = "";
