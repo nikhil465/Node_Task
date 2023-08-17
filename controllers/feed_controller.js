@@ -39,9 +39,9 @@ module.exports.update = async function (req, res) {
       return res.status(404).json({ message: "Feed not found" });
     }
 
-    feed.dataValues.name = req.body.name;
-    feed.dataValues.url = req.body.url;
-    feed.dataValues.description = req.body.description;
+    feed.name = req.body.name;
+    feed.url = req.body.url;
+    feed.description = req.body.description;
 
     feed.save();
 
