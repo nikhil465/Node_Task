@@ -96,12 +96,12 @@ module.exports.update = async function (req, res) {
       return res.status(403).json({ message: "Access denied" });
     }
 
-    user.dataValues.name = req.body.name;
-    user.dataValues.email = req.body.email;
+    user.name = req.body.name;
+    user.email = req.body.email;
     if (req.user.role === "Super Admin") {
       user.dataValues.role = req.body.role;
     }
-    user.dataValues.password = req.body.password;
+    user.password = req.body.password;
 
     user.save();
 
