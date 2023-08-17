@@ -12,8 +12,8 @@ const deleteOldLogFiles = () => {
       const filePath = `${logDirectory}/${file}`;
       fs.stat(filePath, (statErr, stats) => {
         if (statErr) throw statErr;
-        console.log(filePath, stats.mtimeMs < cutoffTime);
-        if (stats.isFile() && stats.mtimeMs < cutoffTime) {
+        console.log(filePath, stats.ctimeMs > cutoffTime);
+        if (stats.isFile() && stats.ctimeMs > cutoffTime) {
           fs.unlink(filePath, (unlinkErr) => {
             if (unlinkErr) {
               console.error(`Error deleting file ${filePath}:`, unlinkErr);

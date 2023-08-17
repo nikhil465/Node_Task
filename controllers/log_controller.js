@@ -6,7 +6,7 @@ module.exports.logs = function (req, res) {
       return res.status(403).json({ message: "Access denied" });
     }
 
-    let logDir = "../production_logs";
+    let logDir = "./production_logs";
 
     const now = new Date();
     const fiveMinutesAgo = new Date(now - 5 * 60 * 1000);
