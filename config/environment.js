@@ -29,11 +29,11 @@ const development = {
 const production = {
   name: "production",
   jwt_secret: process.env.TASK_JWT_SECRET,
-  db: "common",
-  db_username: "postgres",
-  db_password: "nikhil123",
-  db_host: "localhost",
-  db_dialect: "postgres",
+  db: process.env.DB,
+  db_username: process.env.DB_USERNAME,
+  db_password: process.env.DB_PASSWORD,
+  db_host: process.env.DB_HOST,
+  db_dialect: process.env.DB_DIALECT,
   morgan: {
     mode: "combined",
     options: {

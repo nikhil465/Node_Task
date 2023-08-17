@@ -7,14 +7,6 @@ const Access = sequelize.define("Access", {
     primaryKey: true,
     autoIncrement: true,
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  feedId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   permission: {
     type: DataTypes.STRING(1), // 'd' for delete, 'r' for read
     allowNull: false,

@@ -3,8 +3,7 @@ const User = require("./user");
 const Feed = require("./feed");
 const Access = require("./access");
 
-User.belongsToMany(Feed, {
-  through: Access,
+User.hasMany(Access, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
@@ -17,6 +16,7 @@ Feed.hasMany(Access, {
 // Access.belongsTo(User, { foreignKey: "userId" });
 
 Access.belongsTo(Feed, { foreignKey: "feedId" });
+Access.belongsTo(User, { foreignKey: "userId" });
 
 sequelize
   .sync()
