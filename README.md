@@ -23,8 +23,8 @@ This repository contains an Express.js application that includes JWT (JSON Web T
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
+git clone https://github.com/nikhil465/Node_Task.git
+cd Node_Task
 ```
 
 2. Install the dependencies:
