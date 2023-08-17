@@ -10,7 +10,7 @@ router.post(
 );
 
 router.post(
-  "/update",
+  "/update/:id",
   passport.authenticate("jwt", { session: false }),
   feedController.update
 );

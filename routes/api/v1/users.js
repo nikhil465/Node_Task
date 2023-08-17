@@ -11,7 +11,7 @@ router.post(
 );
 
 router.post(
-  "/update",
+  "/update/:id",
   passport.authenticate("jwt", { session: false }),
   userController.update
 );

@@ -46,7 +46,7 @@ module.exports.update = async function (req, res) {
     feed.save();
 
     return res.status(200).json({
-      message: "Feed Updating Successfully!",
+      message: "Feed Updated Successfully!",
     });
   } catch (error) {
     console.log("Error in updating a feed : ", error);
@@ -85,7 +85,7 @@ module.exports.delete = async function (req, res) {
       message: "Feed deleted Successfully!",
     });
   } catch (error) {
-    console.log("Error in creating a user : ", error);
+    console.log("Error in deleting a feed : ", error);
     return res.status(500).json({
       message: "Internal Sever Error",
     });
@@ -149,7 +149,7 @@ module.exports.getFeedById = async function (req, res) {
       data: access.Feed,
     });
   } catch (error) {
-    console.log("Error in creating a user : ", error);
+    console.log("Error in getting a feed : ", error);
     return res.status(500).json({
       message: "Internal Sever Error",
     });
@@ -213,7 +213,7 @@ module.exports.getAllFeeds = async function (req, res) {
       data: access,
     });
   } catch (error) {
-    console.log("Error in creating a user : ", error);
+    console.log("Error in getting all feeds : ", error);
     return res.status(500).json({
       message: "Internal Sever Error",
     });

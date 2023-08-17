@@ -78,24 +78,27 @@ module.exports.create = async function (req, res) {
 
 module.exports.update = async function (req, res) {
   try {
-    if (req.user.role !== "Super Admin") {
+    if (req.user.role !== "Super Admin" && req.user.role !== "Admin") {
       return res.status(403).json({ message: "Access denied" });
     }
 
-    if (req.body.role === "Super Admin") {
-      return res.status(403).json({ message: "Access denied" });
-    }
-
-    let user = await User.findOne({ where: { email: req.body.email } });
+    let user = await User.findOne({ where: { id: req.params.id } });
     if (!user) {
       return res.status(404).json({
         message: "User not found",
       });
     }
 
+    if (
+      (req.body.role === "Admin" || req.body.role === "Super Admin") &&
+      (user.role === "User" || user.role === "Admin")
+    ) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
     user.dataValues.name = req.body.name;
     user.dataValues.email = req.body.email;
-    user.dataValues.password = erq.body.password;
+    user.dataValues.password = req.body.password;
 
     user.save();
 
@@ -175,7 +178,7 @@ module.exports.getUserById = async function (req, res) {
       },
     });
   } catch (error) {
-    console.log("Error in finding a user : ", error);
+    console.log("Error in finding a user by ID : ", error);
     return res.status(500).json({
       message: "Internal Sever Error",
     });
