@@ -8,11 +8,15 @@ User.belongsToMany(Feed, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
-Feed.belongsToMany(User, {
-  through: Access,
+
+Feed.hasMany(Access, {
   foreignKey: "feedId",
   onDelete: "CASCADE",
 });
+
+// Access.belongsTo(User, { foreignKey: "userId" });
+
+Access.belongsTo(Feed, { foreignKey: "feedId" });
 
 sequelize
   .sync()

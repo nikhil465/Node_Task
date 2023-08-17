@@ -49,19 +49,21 @@ module.exports.create = async function (req, res) {
       return res.status(403).json({ message: "Access denied" });
     }
 
-    let user = await User.findOne({ where: { email: req.body.email } });
-    if (user) {
+    let [user, create] = await User.findOrCreate({
+      where: { email: req.body.email },
+      defaults: {
+        name: req.body.name,
+        role: req.body.role,
+        email: req.body.email,
+        password: req.body.password,
+      },
+    });
+
+    if (!create) {
       return res.status(400).json({
         message: "User is already exists!",
       });
     }
-
-    await User.create({
-      name: req.body.name,
-      role: req.body.role,
-      email: req.body.email,
-      password: req.body.password,
-    });
 
     return res.status(200).json({
       message: "User Registered Successfully!",
