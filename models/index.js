@@ -39,7 +39,7 @@ const createSuperAdmin = async function () {
       password: "superadmin@123",
     });
 
-    console.log("Super Admin Created : ", createdUser);
+    //console.log("Super Admin Created : ", createdUser);
   } catch (error) {
     console.log("Error in creating Super Admin : ", error);
     return;
