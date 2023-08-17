@@ -7,6 +7,9 @@ const morgan = require("morgan");
 const env = require("./config/environment");
 const passport = require("passport");
 const passportJwt = require("./config/passport_jwt_strategy");
+const cronJob = require("./jobs/cron_job");
+
+cronJob.start();
 
 app.use(express.urlencoded({ extended: false }));
 

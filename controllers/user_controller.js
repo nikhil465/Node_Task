@@ -12,7 +12,6 @@ module.exports.login = async function (req, res) {
       });
     }
 
-    console.log(user);
     if (user.password !== req.body.password) {
       return res.status(422).json({
         message: "Invalid Email/Password",
