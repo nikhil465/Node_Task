@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const db = require("./config/pg");
+const dbSync = require("./models/index");
 const morgan = require("morgan");
 const env = require("./config/environment");
 const passport = require("passport");
